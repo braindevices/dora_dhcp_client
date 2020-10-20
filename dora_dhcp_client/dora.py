@@ -95,7 +95,8 @@ if __name__ == "__main__":
                 logging.error(f"Unable to parse JSON options file {args.option}: {e}")
                 exit(1)
     options_list = options.OptionList(opts)
-    if client_addr := options_list.by_code(61):
+    client_addr = options_list.by_code(61)
+    if client_addr:
         mac_addr = client_addr.value["client_identifier"]["hwaddr"]
 
     if verbosity:
